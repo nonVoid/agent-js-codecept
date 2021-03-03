@@ -147,8 +147,10 @@ module.exports = (config) => {
   });
 
   event.dispatcher.on(event.test.failed, async (test, err) => {
+    
     launchStatus = rp_FAILED;
     suiteStatus = rp_FAILED;
+    output.print(`Error: ${err}`);
 
     if (failedStep && failedStep.tempId) {
       const step = failedStep;
@@ -157,12 +159,15 @@ module.exports = (config) => {
   
       const screenshot = await attachScreenshot();      
 
-      resp = await rpClient.sendLog(step.tempId, {
-        level: 'ERROR',
-        message: `${err.stack}`,
-        time: step.startTime,
-      }, screenshot).promise; 
-
+      try {
+        resp = await rpClient.sendLog(step.tempId, {
+          level: 'ERROR',
+          message: `${err.stack}`,
+          time: step.startTime,
+        }, screenshot).promise; 
+      } catch(error) {
+        output.print(`Error with sendLog ${error.message}`);
+      }
     }
 
     if (!test.tempId) return;
