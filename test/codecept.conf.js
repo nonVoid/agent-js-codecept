@@ -11,18 +11,18 @@ exports.config = {
   helpers: {
     Puppeteer: {
       url: 'https://www.google.de/',
-      show: false
-    }
+      show: false,
+    },
   },
   bootstrap: null,
   mocha: {},
   name: 'codeceptjs-rphelper',
   plugins: {
     retryFailedStep: {
-      enabled: false
+      enabled: false,
     },
     screenshotOnFail: {
-      enabled: true
+      enabled: true,
     },
     reportportal: {
       require: '../index',
@@ -34,7 +34,7 @@ exports.config = {
       projectName: 'peterngtr_personal',
       rerun: false,
       debug: false,
-      enabled: true
-    }
-  }
-}
+      enabled: true,
+    },
+  },
+};
