@@ -1,6 +1,6 @@
 {
-  "name": "@reportportal/agent-js-codecept",
-  "version": "0.2.3",
+  "name": "@nonvoid/agent-js-codecept",
+  "version": "0.2.4",
   "description": "Reportportal plugin for Codecept JS tests",
   "repository": {
     "type": "git",
