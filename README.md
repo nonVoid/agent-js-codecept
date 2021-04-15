@@ -7,18 +7,18 @@ This helpes you integrate the test results of CodeceptJS with ReportPortal
 
 ![ReportPortal Test](https://i.ibb.co/Qm52G0n/Screenshot-2019-04-11-at-15-57-40.png)
 
-`@reportportal/agent-js-codecept` is a [CodeceptJS](https://codecept.io/) plugin which can publish tests results on [ReportPortal](https://reportportal.io/) after execution.
+`@nonvoid/agent-js-codecept` is a [CodeceptJS](https://codecept.io/) plugin which can publish tests results on [ReportPortal](https://reportportal.io/) after execution.
 
 When enabled this plugin sends information on test runs to ReportPortal server:
 
-* ✅status for failed and passed tests
-* 🔍step by step log
-* 🖼screenshots on failure are attached
+- ✅status for failed and passed tests
+- 🔍step by step log
+- 🖼screenshots on failure are attached
 
 ## Installation
 
 ```sh
-npm i @reportportal/agent-js-codecept --save
+npm i @nonvoid/agent-js-codecept --save
 ```
 
 ## Configuration
@@ -33,7 +33,7 @@ Example:
    plugins: {
     reportportal: {
       enabled: true,
-      require: '@reportportal/agent-js-codecept',
+      require: '@nonvoid/agent-js-codecept',
       token: 'YOUR_TOKEN',
       endpoint: 'http://localhost:8080/api/v1',
       launchName: 'local launch',
@@ -64,7 +64,7 @@ You can send logs to ReportPortal to current step / test by accessing this plugi
 const reportPortal = codeceptjs.container.plugins('reportportal');
 reportPortal.addLog({
   level: 'debug',
-  message: 'your message'
+  message: 'your message',
 });
 ```
 
@@ -72,21 +72,24 @@ To send attachment, use second parameter:
 
 ```js
 const reportPortal = codeceptjs.container.plugins('reportportal');
-reportPortal.addLog({
-  level: 'debug',
-  message: 'your message'
-}, {
-  name: 'screenshot.png',
-  type: 'image/png',
-  content: fs.readFileSync('output/screenshot.png')
-});
+reportPortal.addLog(
+  {
+    level: 'debug',
+    message: 'your message',
+  },
+  {
+    name: 'screenshot.png',
+    type: 'image/png',
+    content: fs.readFileSync('output/screenshot.png'),
+  },
+);
 ```
 
 See [`sendLog` method of ReportPortal JavaScript Client](https://github.com/reportportal/client-javascript#sendlog) for more oprtions.
 
 ### Get Report URL
 
-Once report is posted a special `reportportal.result` event is created. 
+Once report is posted a special `reportportal.result` event is created.
 
 You can use it to pass URL of a report into other plugins. For instance, you can use it to send Slack or Email notifications including a link to a report.
 
@@ -95,7 +98,7 @@ You can use it to pass URL of a report into other plugins. For instance, you can
 event.dispatcher.on('reportportal.result', (result) => {
   // use result.link as URL to report
   console.log('Report was published at', result.link);
-})
+});
 ```
 
 ## Todo
