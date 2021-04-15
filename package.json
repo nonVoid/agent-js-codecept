@@ -4,7 +4,7 @@
   "description": "Reportportal plugin for Codecept JS tests",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:reportportal/agent-js-codecept.git"
+    "url": "git+ssh://git@github.com:nonvoid/agent-js-codecept.git"
   },
   "keywords": [
     "codeceptJS",
@@ -13,12 +13,12 @@
     "codeceptjs-reportportal",
     "codeceptjs-rphelper"
   ],
-  "author": "Thanh Nguyen <peter.nguyentr@gmail.com>",
+  "author": "Felix Weber <git@nonvoid.de>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com:reportportal/agent-js-codecept/issues"
+    "url": "https://github.com:nonvoid/agent-js-codecept/issues"
   },
-  "homepage": "https://github.com:reportportal/agent-js-codecept#readme",
+  "homepage": "https://github.com:nonvoid/agent-js-codecept#readme",
   "main": "index.js",
   "dependencies": {
     "@reportportal/client-javascript": "^5.0.3"
